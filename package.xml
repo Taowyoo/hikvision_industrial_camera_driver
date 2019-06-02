@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>hik_camera_driver</name>
+  <version>1.0.0</version>
+  <description>The hikvision camera driver package for hikvision CMOS GigE industrial camera such as CA series</description>
+
+  <maintainer email="nick_cao@roboticplus.com">Nick Cao</maintainer>
+
+  <license>MIT</license>
+  <author email="caoyxsh@outlook.com">Nick Cao</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>camera_info_manager</build_depend>
+  <build_depend>image_transport</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>std_srvs</build_depend>
+  <build_export_depend>camera_info_manager</build_export_depend>
+  <build_export_depend>image_transport</build_export_depend>
+  <build_export_depend>roscpp</build_export_depend>
+  <build_export_depend>sensor_msgs</build_export_depend>
+  <build_export_depend>std_srvs</build_export_depend>
+  <exec_depend>camera_info_manager</exec_depend>
+  <exec_depend>image_transport</exec_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>std_srvs</exec_depend>
+  <depend>cv_bridge</depend>
+
+  <export>
+  </export>
+</package>
