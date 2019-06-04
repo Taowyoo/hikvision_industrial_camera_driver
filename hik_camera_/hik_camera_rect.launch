@@ -1,0 +1,19 @@
+<launch>
+    <arg name="image_width" default="2592"/>
+    <arg name="image_height" default="2048"/>
+    <arg name="camera_frame_id" default="hik_camera"/>
+    <arg name="camera_name" default="hik_camera"/>
+    <arg name="camera_info_url" default=""/>
+    <arg name="image_pub_rate" default="10"/>
+
+    <node pkg="hik_camera_driver" type="hik_camera_driver_node" name="hik_cam_node" output="screen">
+        <param name="image_pub_rate" value="$(arg image_pub_rate)"/>
+        <param name="image_width" value="$(arg image_width)"/>
+        <param name="image_height" value="$(arg image_height)"/>
+        <param name="camera_frame_id" value="$(arg camera_frame_id)"/>
+        <param name="camera_name" value="$(arg camera_name)"/>
+        <param name="camera_info_url" value="$(arg camera_info_url)"/>
+        <remap from="hik_camera" to="hik_camera/image_raw"/>
+    </node>
+    <node name="image_proc" pkg="image_proc" type="image_proc" ns="hik_camera"/>
+</launch>

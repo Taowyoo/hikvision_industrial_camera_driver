@@ -17,7 +17,7 @@ include_directories(${OpenCV_INCLUDES})
 
 catkin_package(
  INCLUDE_DIRS include
-#  LIBRARIES hik_camera_driver
+ LIBRARIES ${PROJECT_NAME}
 #  CATKIN_DEPENDS camera_info_manager cv_bridg image_transport roscpp sensor_msgs std_srvs
 #  DEPENDS system_lib
 )
@@ -31,40 +31,38 @@ include
   ${catkin_INCLUDE_DIRS}
 )
 
-link_directories(lib)
+
 ## Declare a C++ library
+link_directories(lib)
 add_library(${PROJECT_NAME}
   src/hik_camera_driver.cpp
 )
 
 add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
-target_link_libraries(hik_cam
+target_link_libraries(${PROJECT_NAME}
     ${catkin_LIBRARIES}
     ${OpenCV_LIBS}
-    ${PROJECT_NAME}
+    MvCameraControl
 )
 
 
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/hik_camera_driver_node.cpp)
+add_executable(${PROJECT_NAME}_node src/hik_camera_driver_node.cpp)
 
-## Rename C++ executable without prefix
-## The above recommended prefix causes long target names, the following renames the
-## target back to the shorter version for ease of user use
-## e.g. "rosrun someones_pkg node" instead of "rosrun someones_pkg someones_pkg_node"
-# set_target_properties(${PROJECT_NAME}_node PROPERTIES OUTPUT_NAME node PREFIX "")
 
-## Add cmake target dependencies of the executable
-## same as for the library above
-# add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# Add cmake target dependencies of the executable
+# same as for the library above
+add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
-## Specify libraries to link a library or executable target against
-# target_link_libraries(${PROJECT_NAME}_node
-#   ${catkin_LIBRARIES}
-# )
+# Specify libraries to link a library or executable target against
+target_link_libraries(${PROJECT_NAME}_node
+  ${catkin_LIBRARIES}
+  ${OpenCV_LIBS}
+  ${PROJECT_NAME}
+)
 
 #############
 ## Install ##

@@ -1,0 +1,10 @@
+<launch>
+    <node name="image_view_raw" pkg="image_view" type="image_view" respawn="false" output="screen">
+        <param name="autosize" value="false" />
+        <remap from="image" to="/hik_camera/image_raw"/>
+    </node>
+    <node name="image_view_rect" pkg="image_view" type="image_view" respawn="false" output="screen">
+        <param name="autosize" value="false" />
+        <remap from="image" to="/hik_camera/image_rect"/>
+    </node>
+</launch>

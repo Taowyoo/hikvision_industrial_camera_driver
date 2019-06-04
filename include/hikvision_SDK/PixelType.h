@@ -112,7 +112,7 @@ enum MvGvspPixelType
     PixelType_Gvsp_RGB12_Planar             =   (MV_GVSP_PIX_COLOR | MV_PIXEL_BIT_COUNT(48) | 0x0023),
     PixelType_Gvsp_RGB16_Planar             =   (MV_GVSP_PIX_COLOR | MV_PIXEL_BIT_COUNT(48) | 0x0024),
 
-    // �Զ����ͼƬ��ʽ
+    // 自定义的图片格式
     PixelType_Gvsp_Jpeg                     =   (MV_GVSP_PIX_CUSTOM | MV_PIXEL_BIT_COUNT(24) | 0x0001),
 
     PixelType_Gvsp_Coord3D_ABC32f           =   (MV_GVSP_PIX_COLOR | MV_PIXEL_BIT_COUNT(96) | 0x00C0),
@@ -128,7 +128,7 @@ enum MvGvspPixelType
 //
 //};
 
-//��ƽ̨����
+//跨平台定义
 //Cross Platform Definition
 #ifdef WIN32
 typedef __int64 int64_t;
